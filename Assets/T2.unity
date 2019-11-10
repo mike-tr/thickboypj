@@ -699,27 +699,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &649909712 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 446595006435327075, guid: 568e1f31f112d6240b01509710e4d21f,
-    type: 3}
-  m_PrefabInstance: {fileID: 446595006603678705}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &649909718
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 649909712}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6831755fa7fa2f044b4b4b2b618f48d1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  root: {fileID: 1376744846}
-  ignoreRoot: 1
-  targetPosition: {x: -2.38, y: 0}
 --- !u!1 &722554674
 GameObject:
   m_ObjectHideFlags: 0
@@ -840,7 +819,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 15
+  m_Mass: 55
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -1527,12 +1506,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!4 &1376744846 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1535505697712502689, guid: 568e1f31f112d6240b01509710e4d21f,
-    type: 3}
-  m_PrefabInstance: {fileID: 446595006603678705}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1470866310
 GameObject:
   m_ObjectHideFlags: 0
@@ -2035,7 +2008,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afc03c7943918e043a3c6414c31aa787, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  force: 25
+  force: 250
   rg: {fileID: 722554678}
 --- !u!4 &1817337153
 Transform:
@@ -2185,11 +2158,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: StickTheMAn
       objectReference: {fileID: 0}
-    - target: {fileID: 446595005432653286, guid: 568e1f31f112d6240b01509710e4d21f,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6709837541250438650, guid: 568e1f31f112d6240b01509710e4d21f,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2243,11 +2211,6 @@ PrefabInstance:
     - target: {fileID: 6709837541250438650, guid: 568e1f31f112d6240b01509710e4d21f,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 446595005432653293, guid: 568e1f31f112d6240b01509710e4d21f,
-        type: 3}
-      propertyPath: m_Constraints
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
