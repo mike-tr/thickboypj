@@ -12,7 +12,7 @@ public class Limb : MonoBehaviour
     public Transform root;
 
     // the target pos we wanna rotate to.
-    public Vector2 targetPos;
+    public Vector2 resetPosition;
 
     // force to controll how strong/fast the limb would be (its wierd).
     public float force = 100;
@@ -26,6 +26,9 @@ public class Limb : MonoBehaviour
 
     // in case the limb is facing the wrong direction with 90 degree Error.
     public bool sin = false;
+
+    [Space]
+    public bool resting = false;
     void Start()
     {
         //Get all the Hinges that are connceted to each other,
@@ -39,17 +42,37 @@ public class Limb : MonoBehaviour
         parts.Reverse();
     }
 
+    public void SetPosition(Vector2 targetPos) {
+        currentPos = targetPos + (Vector2)root.position;
+        resetPos = false;
+    }
+
     // Update is called once per frame
-    void Update()
+    bool resetPos = true;
+    Vector2 currentPos;
+    void FixedUpdate()
     {
+        var force = this.force;
+        if (resetPos) {
+            currentPos = resetPosition + (Vector2)root.position;
+            if (resting) {
+                force *= 0.1f;
+            }
+        } else {
+            resetPos = true;
+        }
         // Actually, rotate each part to the target.
         // Add more force to the "parent" parts, because they simply need more force, to ignore the upper parts, swings.
+        
         var index = parts.Count;
         foreach(var part in parts) {
-            part.RotateToward(targetPos + (Vector2)root.position, force * (index * (index + 1) * .5f), ratio);
+            part.RotateToward(currentPos, force * (index * (index + 1) * .5f), ratio);
             index--;
-        }
+        } 
     }
+
+
+    
 
     private void OnDrawGizmos() {
         // Draw gizmos for debug.
@@ -58,6 +81,6 @@ public class Limb : MonoBehaviour
         }
 
         Gizmos.color = Color.red;
-        Gizmos.DrawSphere(targetPos + (Vector2)root.position, .1f);
+        Gizmos.DrawSphere(resetPosition + (Vector2)root.position, .1f);
     }
 }
