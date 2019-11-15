@@ -16,6 +16,20 @@ public class StickmanController : MonoBehaviour
 
     int frameIndex = 0;
     int dir = 1;
+
+    public int Jumps = 2;
+    public int JumpCharge = 1;
+
+    private float jtime = 0;
+    public void SetGrounded(bool value) {
+        if (value) {
+            if(jtime > Time.timeSinceLevelLoad) {
+                return;
+            }
+            JumpCharge = Jumps;
+        }
+    }
+    
     void Update()
     {
         RotateTo(hip, 0, hipForce);
@@ -34,7 +48,13 @@ public class StickmanController : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.Space)) {
-            hip.AddForce(jumpForce * Vector2.up, ForceMode2D.Impulse);
+            if(JumpCharge > 0) {
+                hip.velocity = Vector2.zero;
+                hip.AddForce(jumpForce * Vector2.up, ForceMode2D.Impulse);
+                JumpCharge--;
+                jtime = Time.timeSinceLevelLoad + .1f;
+            }
+                    
         }
     }
 
@@ -49,6 +69,7 @@ public class StickmanController : MonoBehaviour
         angle *= .5f;
         angle *= (1 + angle);
 
+        rigidbody.angularVelocity *= .5f;
         rigidbody.AddTorque(angle * force * x);
     }
 }
