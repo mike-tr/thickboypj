@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8359635707521321537}
   - component: {fileID: 755224623032958823}
   - component: {fileID: 6590198829590119390}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: sword_r
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,4 +96,3 @@ MonoBehaviour:
   strength: 15
   mana: 15
   type: 2
-  equip_position: {x: 0.05, y: -2.96}

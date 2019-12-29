@@ -21,6 +21,18 @@ public class StickmanController : MonoBehaviour
     public int JumpCharge = 1;
 
     private float jtime = 0;
+
+    Camera cam;
+
+    public bool IsMe = true;
+    private bool isDead;
+    private void Start() {
+        cam = Camera.main;
+    }
+
+    float rattack = 0;
+    float lattack = 0;
+
     public void SetGrounded(bool value) {
         if (value) {
             if(jtime > Time.timeSinceLevelLoad) {
@@ -29,10 +41,22 @@ public class StickmanController : MonoBehaviour
             JumpCharge = Jumps;
         }
     }
+
+    public void Kill() {
+        isDead = true;
+        legL.resting = true;
+        legR.resting = true;
+    }
     
     void Update()
     {
+        if (isDead) {
+            return;
+        }
         RotateTo(hip, 0, hipForce);
+
+        if (!IsMe)
+            return;
 
         var direction = Input.GetAxis("Horizontal");
         if(Mathf.Abs(direction) > 0) {
@@ -42,8 +66,8 @@ public class StickmanController : MonoBehaviour
                 dir *= -1;
             }
 
-            legL.SetPosition(Vector2.right * 10 * dir + Vector2.down * 7);
-            legR.SetPosition(-Vector2.right * 10 * dir + Vector2.down * 7);
+            legL.SetPosition(Vector2.right * 10 * dir + Vector2.down * 8);
+            legR.SetPosition(-Vector2.right * 10 * dir + Vector2.down * 8);
             frameIndex++;
         }
 
@@ -53,8 +77,22 @@ public class StickmanController : MonoBehaviour
                 hip.AddForce(jumpForce * Vector2.up, ForceMode2D.Impulse);
                 JumpCharge--;
                 jtime = Time.timeSinceLevelLoad + .1f;
-            }
-                    
+            }                 
+        }
+
+        var reverse = 1f;
+        if (Input.GetKey(KeyCode.R)) {
+            reverse = -1f;
+        }
+
+        if (Input.GetKey(KeyCode.E)) {
+            var dir = cam.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+            handR.SetPosition(dir * reverse, 5f);
+        }
+
+        if (Input.GetKey(KeyCode.Q)) {
+            var dir = cam.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+            handL.SetPosition(dir * reverse, 5f);
         }
     }
 

@@ -5,5 +5,4 @@ using UnityEngine;
 public class Equipable : Item
 {
     public BodyPartType type;
-    public Vector2 equip_position;
 }

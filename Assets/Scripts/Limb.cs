@@ -42,8 +42,10 @@ public class Limb : MonoBehaviour
         parts.Reverse();
     }
 
-    public void SetPosition(Vector2 targetPos) {
+    float addedForce = 1f;
+    public void SetPosition(Vector2 targetPos, float addedForce = 1f) {
         currentPos = targetPos + (Vector2)root.position;
+        this.addedForce = addedForce;
         resetPos = false;
     }
 
@@ -66,13 +68,11 @@ public class Limb : MonoBehaviour
         
         var index = parts.Count;
         foreach(var part in parts) {
-            part.RotateToward(currentPos, force * (index * (index + 1) * .5f), ratio);
+            part.RotateToward(currentPos, force * (index * (index + 1) * .5f * addedForce), ratio);
             index--;
-        } 
+        }
+        addedForce = 1f;
     }
-
-
-    
 
     private void OnDrawGizmos() {
         // Draw gizmos for debug.
