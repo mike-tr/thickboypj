@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class StickmanController : MonoBehaviour
 {
+    public Animator animator;
+
     public Rigidbody2D hip;
     public Limb handR;
     public Limb handL;
@@ -28,6 +30,7 @@ public class StickmanController : MonoBehaviour
     private bool isDead;
     private void Start() {
         cam = Camera.main;
+        animator = GetComponent<Animator>();
     }
 
     float rattack = 0;
@@ -47,7 +50,8 @@ public class StickmanController : MonoBehaviour
         legL.resting = true;
         legR.resting = true;
     }
-    
+
+    bool walking = false;
     void Update()
     {
         if (isDead) {
@@ -61,14 +65,19 @@ public class StickmanController : MonoBehaviour
         var direction = Input.GetAxis("Horizontal");
         if(Mathf.Abs(direction) > 0) {
             hip.AddForce(moveSpeed * direction * Vector2.right);
-            if(frameIndex > 10) {
-                frameIndex = 0;
-                dir *= -1;
-            }
+            //if (frameIndex > 10) {
+            //    frameIndex = 0;
+            //    dir *= -1;
+            //}
 
-            legL.SetPosition(Vector2.right * 10 * dir + Vector2.down * 8);
-            legR.SetPosition(-Vector2.right * 10 * dir + Vector2.down * 8);
-            frameIndex++;
+            //legL.SetPosition(Vector2.right * 10 * dir + Vector2.down * 8);
+            //legR.SetPosition(-Vector2.right * 10 * dir + Vector2.down * 8);
+            //frameIndex++;
+            animator.SetBool("walk", true);
+            walking = true;
+        }else if (walking) {
+            walking = false;
+            animator.SetBool("walk", false);
         }
 
         if (Input.GetKeyDown(KeyCode.Space)) {

@@ -29,6 +29,9 @@ public class Limb : MonoBehaviour
 
     [Space]
     public bool resting = false;
+
+    //public LimbAnimator animator;
+
     void Start()
     {
         //Get all the Hinges that are connceted to each other,
@@ -42,7 +45,8 @@ public class Limb : MonoBehaviour
         parts.Reverse();
     }
 
-    float addedForce = 1f;
+    [Range(1f, 5f)]
+    public float addedForce = 1f;
     public void SetPosition(Vector2 targetPos, float addedForce = 1f) {
         currentPos = targetPos + (Vector2)root.position;
         this.addedForce = addedForce;
@@ -50,6 +54,7 @@ public class Limb : MonoBehaviour
     }
 
     // Update is called once per frame
+    [SerializeField]
     bool resetPos = true;
     Vector2 currentPos;
     void FixedUpdate()
