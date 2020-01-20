@@ -7,6 +7,10 @@ https://www.youtube.com/playlist?list=PLa8x6KWHarJdjv5YuqLUS2THURdVNCMPk
 All the scrips. i made in the tutorials.
 https://github.com/miko-t/stickman_new/blob/master/Assets/Scripts/Tutorials
 
+The most important Scirpt would be " the limbic system", with is that : 
+https://github.com/miko-t/stickman_new/blob/master/Assets/Scripts/Tutorials/Limb.cs
+https://github.com/miko-t/stickman_new/blob/master/Assets/Scripts/Tutorials/LimbPart.cs
+
 
 There is clearly more then one way you can go about creating a stickman,
 the point being i wanted to make a "limbic" system. where you can set, the desired,
