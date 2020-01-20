@@ -10,7 +10,6 @@ https://github.com/miko-t/stickman_new/blob/master/Assets/Scripts/Tutorials
 
 The most important Scirpt would be " the limbic system", with is that : 
 https://github.com/miko-t/stickman_new/blob/master/Assets/Scripts/Tutorials/Limb.cs,
-
 https://github.com/miko-t/stickman_new/blob/master/Assets/Scripts/Tutorials/LimbPart.cs
 
 
