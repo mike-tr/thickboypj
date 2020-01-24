@@ -30,7 +30,7 @@ public class Limb : MonoBehaviour
     [Space]
     public bool resting = false;
 
-    //public LimbAnimator animator;
+    //1public LimbAnimator animator;
 
     void Start()
     {
