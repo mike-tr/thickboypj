@@ -6,6 +6,7 @@ public class IgnoreCollision : MonoBehaviour
 {
     // Start is called before the first frame update
     Collider2D[] colliders;
+
     void Start()
     {
         colliders = GetComponentsInChildren<Collider2D>();
