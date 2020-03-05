@@ -13,6 +13,7 @@ public class StickmanController : MonoBehaviour
     public Limb legL;
 
     public float hipForce = 500;
+    public float addedForce = 1f;
     public float moveSpeed = 500;
     public float jumpForce = 500;
 
@@ -117,6 +118,7 @@ public class StickmanController : MonoBehaviour
         angle *= (1 + angle);
 
         rigidbody.angularVelocity *= .5f;
-        rigidbody.AddTorque(angle * force * x);
+        rigidbody.AddTorque(angle * force * addedForce* x);
+        addedForce = 1f;
     }
 }

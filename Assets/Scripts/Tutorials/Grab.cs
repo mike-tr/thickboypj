@@ -14,11 +14,26 @@ public class Grab : MonoBehaviour
     private float mass;
     private LayerMask mask;
     private Collider2D coll;
+
+    private IgnoreCollision ig;
+
+    int currentId = -1;
+
+    private StickmanController controller;
+    private Limb limb;
+
     void Start()
     {
+        limb = GetComponentInParent<Limb>();
+        controller = GetComponentInParent<StickmanController>();
+        ig = GetComponentInParent<IgnoreCollision>();
         var circleColl = gameObject.AddComponent<CircleCollider2D>();
         circleColl.radius = .05f;
         coll = circleColl;
+        if (ig) {
+            ig.IgnoreCollider(coll);
+        }
+
         rb = GetComponent<Rigidbody2D>();
 
         parent = transform;
@@ -30,10 +45,23 @@ public class Grab : MonoBehaviour
         joint.enabled = false;
     }
 
+
+    float addLimbForce;
     private void Update() {
+        if (controller && !controller.IsMe)
+            return;
+
+        if(limb && addLimbForce > 1f) {
+            limb.addedForce *= addLimbForce;
+            controller.addedForce *= addLimbForce;
+            Debug.Log(addLimbForce);
+        }
+
         if (Input.GetKeyDown(key)) {
             if(joint.enabled) {
-                if (joint.connectedBody) { 
+                if (joint.connectedBody) {
+                    addLimbForce = 1;
+                    ig.EnableColliders(currentId);
                     joint.connectedBody.mass = mass;
                     joint.connectedBody = null;
                 }
@@ -45,6 +73,8 @@ public class Grab : MonoBehaviour
                         continue;
                     var rigidbody = coll.GetComponent<Rigidbody2D>();
                     if (rigidbody) {
+                        currentId = rigidbody.GetInstanceID();
+
                         var cd = coll.Distance(this.coll);
                         var pos = cd.pointA - cd.pointB;
                         rb.position += pos;
@@ -52,13 +82,26 @@ public class Grab : MonoBehaviour
                         joint.connectedBody = rigidbody;
                         mass = rigidbody.mass;
                         rigidbody.mass = 1f;
+
+                        
                         joint.enabled = true;
-                        break;
+                        if (!rigidbody.isKinematic) {
+                            var parent = rigidbody.transform;
+                            while (parent.parent) {
+                                parent = parent.parent;
+                            }
+                            var col = parent.GetComponentsInChildren<Collider2D>();
+                            ig.AddIgnoreList(currentId, col);
+                            addLimbForce = Mathf.Log(col.Length, 2) * 1.1f;
+
+                            break;
+                        }
                     } else {
                         var cd = coll.Distance(this.coll);
                         var pos = cd.pointA - cd.pointB;
                         rb.position += pos;
                         joint.enabled = true;
+
                     }
                 }
 
