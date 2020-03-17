@@ -8,7 +8,7 @@ public enum BodyPartType {
     hand_r,
 }
 
-public class BodyPart : MonoBehaviour
+public class EquipableBodyPart : MonoBehaviour
 {
     public IgnoreCollision ignore;
 

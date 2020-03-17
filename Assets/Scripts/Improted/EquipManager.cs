@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EquipManager : MonoBehaviour
 {
-    private Dictionary<BodyPartType, BodyPart> bodyParts = new Dictionary<BodyPartType, BodyPart>();
+    private Dictionary<BodyPartType, EquipableBodyPart> bodyParts = new Dictionary<BodyPartType, EquipableBodyPart>();
     public List<Item> inventory = new List<Item>();
 
     public Equipable starting_item;
@@ -15,7 +15,7 @@ public class EquipManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        BodyPart[] get_parts = transform.GetComponentsInChildren<BodyPart>();
+        EquipableBodyPart[] get_parts = transform.GetComponentsInChildren<EquipableBodyPart>();
         foreach(var part in get_parts) {
             bodyParts.Add(part.type, part);
             part.manager = this;
