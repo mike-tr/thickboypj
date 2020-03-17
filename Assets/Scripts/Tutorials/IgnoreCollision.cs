@@ -8,12 +8,14 @@ public class IgnoreCollision : MonoBehaviour
 
     Dictionary<int, List<Collider2D>> igList = new Dictionary<int, List<Collider2D>>();
 
-    Collider2D[] colliders;
+    List<Collider2D> colliders = new List<Collider2D>();
     void Start()
     {
-        colliders = GetComponentsInChildren<Collider2D>();
-        for (int i = 0; i < colliders.Length; i++) {
-            for (int k = i+1; k < colliders.Length; k++) {
+        foreach(var coll in GetComponentsInChildren<Collider2D>()) {
+            colliders.Add(coll);
+        }
+        for (int i = 0; i < colliders.Count; i++) {
+            for (int k = i+1; k < colliders.Count; k++) {
                 Physics2D.IgnoreCollision(colliders[i], colliders[k]);
             }
         }
@@ -57,9 +59,15 @@ public class IgnoreCollision : MonoBehaviour
     }
 
     public void IgnoreCollider(Collider2D collider, bool ignore = true) {
-        for (int i = 0; i < colliders.Length; i++) {
+        for (int i = 0; i < colliders.Count; i++) {
             Physics2D.IgnoreCollision(colliders[i], collider, ignore);
         }
+
+        if (colliders.Contains(collider)) {
+            if (!ignore)
+                colliders.Remove(collider);
+        } else if (ignore)
+            colliders.Add(collider);
     }
 
     IEnumerator EnableDelay(int id, float time) {

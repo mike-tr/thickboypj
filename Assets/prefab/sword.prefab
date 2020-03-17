@@ -99,6 +99,7 @@ MonoBehaviour:
   strength: 2
   mana: 5
   type: 1
+  direction: -1
 --- !u!70 &8076024419809162486
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

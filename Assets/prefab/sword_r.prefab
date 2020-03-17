@@ -96,3 +96,4 @@ MonoBehaviour:
   strength: 15
   mana: 15
   type: 2
+  direction: -1

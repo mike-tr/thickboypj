@@ -18,8 +18,39 @@ public class BodyPart : MonoBehaviour
     public EquipManager manager;
     private Equipable item;
 
+    public bool flip = false;
+    public Transform origin;
+
     public void Start() {
         ignore = GetComponentInParent<IgnoreCollision>();
+        if (flip) {
+            StartCoroutine(Flipper());
+        }
+    }
+
+    IEnumerator Flipper() {
+        var flipper = new Vector2(1, -1);
+        void flipr() {
+            var rot = item.transform.localEulerAngles;
+            rot.x += 180;
+            item.transform.localEulerAngles = rot;
+            item.transform.localPosition *= flipper;
+        }
+
+        while (true) {
+            yield return new WaitForSeconds(0.1f);
+            if (item && item.direction != Direction.none) {
+                if ((transform.position.x - origin.position.x) < 0) {
+                    if (item.direction == Direction.right) {
+                        flipr();
+                        item.direction = Direction.left;
+                    }
+                } else if (item.direction == Direction.left) {
+                    flipr();
+                    item.direction = Direction.right;
+                }
+            }
+        }
     }
 
     public void Equip(Equipable new_item) {
