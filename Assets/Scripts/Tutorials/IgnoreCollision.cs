@@ -36,12 +36,12 @@ public class IgnoreCollision : MonoBehaviour
     public void AddToIgnoreList(int id, Collider2D collider) {
         if(igList.TryGetValue(id, out var list)) {
             list.Add(collider);
-            IgnoreCollider(collider);
+            IgnoreForigineCollider(collider);
         } else {
             list = new List<Collider2D>();
             list.Add(collider);
             igList.Add(id, list);
-            IgnoreCollider(collider);
+            IgnoreForigineCollider(collider);
         }
     }
 
@@ -52,17 +52,20 @@ public class IgnoreCollision : MonoBehaviour
     private void FinalEnable(int id) {
         if (igList.TryGetValue(id, out var list)) {
             foreach (var coll in list) {
-                IgnoreCollider(coll, false);
+                IgnoreForigineCollider(coll, false);
             }
             igList.Remove(id);
         }
     }
 
-    public void IgnoreCollider(Collider2D collider, bool ignore = true) {
+    public void IgnoreForigineCollider(Collider2D collider, bool ignore = true) {
         for (int i = 0; i < colliders.Count; i++) {
             Physics2D.IgnoreCollision(colliders[i], collider, ignore);
         }
+    }
 
+    public void IgnoreCollider(Collider2D collider, bool ignore = true) {
+        IgnoreForigineCollider(collider, ignore);
         if (colliders.Contains(collider)) {
             if (!ignore)
                 colliders.Remove(collider);

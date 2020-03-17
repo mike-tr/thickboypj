@@ -63,6 +63,7 @@ public class Limb : MonoBehaviour
         if (resetPos) {
             currentPos = resetPosition + (Vector2)root.position;
             if (resting) {
+                addedForce = 1;
                 force *= 0.1f;
             }
         } else {

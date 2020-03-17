@@ -96,6 +96,7 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
+    m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -321,6 +322,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -428,6 +430,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -672,6 +675,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -793,6 +797,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -861,6 +866,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1051,6 +1057,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1172,6 +1179,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1239,6 +1247,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1386,6 +1395,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1479,6 +1489,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1600,6 +1611,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1729,6 +1741,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -1888,6 +1901,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2132,6 +2146,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2239,6 +2254,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2441,6 +2457,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -2483,15 +2500,15 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4767420962472631616, guid: 29fff1ec1c87d9540ae6f8ac30b9aa7e,
+    - target: {fileID: 1174487538644346750, guid: 29fff1ec1c87d9540ae6f8ac30b9aa7e,
         type: 3}
-      propertyPath: m_Name
-      value: StickmanAnimated (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 4767420962472631616, guid: 29fff1ec1c87d9540ae6f8ac30b9aa7e,
-        type: 3}
-      propertyPath: m_IsActive
+      propertyPath: IsMe
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1174487538644346750, guid: 29fff1ec1c87d9540ae6f8ac30b9aa7e,
+        type: 3}
+      propertyPath: hipForce
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 1803118119510109532, guid: 29fff1ec1c87d9540ae6f8ac30b9aa7e,
         type: 3}
@@ -2548,10 +2565,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1174487538644346750, guid: 29fff1ec1c87d9540ae6f8ac30b9aa7e,
+    - target: {fileID: 4767420962472631616, guid: 29fff1ec1c87d9540ae6f8ac30b9aa7e,
         type: 3}
-      propertyPath: IsMe
-      value: 0
+      propertyPath: m_Name
+      value: StickmanAnimated (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4767420962472631616, guid: 29fff1ec1c87d9540ae6f8ac30b9aa7e,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8736167600365895543, guid: 29fff1ec1c87d9540ae6f8ac30b9aa7e,
+        type: 3}
+      propertyPath: health
+      value: 1000
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29fff1ec1c87d9540ae6f8ac30b9aa7e, type: 3}
@@ -2567,6 +2594,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: SNormal
       objectReference: {fileID: 0}
+    - target: {fileID: 2225495718119076442, guid: a7478481369438844b1c8432f37a9f1b,
+        type: 3}
+      propertyPath: flip
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2225495718119076442, guid: a7478481369438844b1c8432f37a9f1b,
+        type: 3}
+      propertyPath: origin
+      value: 
+      objectReference: {fileID: 1859817803}
     - target: {fileID: 5030013820070055214, guid: a7478481369438844b1c8432f37a9f1b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2622,16 +2659,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2225495718119076442, guid: a7478481369438844b1c8432f37a9f1b,
+    - target: {fileID: 5514476026331678476, guid: a7478481369438844b1c8432f37a9f1b,
         type: 3}
-      propertyPath: flip
-      value: 1
+      propertyPath: moveSpeed
+      value: 250
       objectReference: {fileID: 0}
-    - target: {fileID: 2225495718119076442, guid: a7478481369438844b1c8432f37a9f1b,
-        type: 3}
-      propertyPath: origin
-      value: 
-      objectReference: {fileID: 1859817803}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a7478481369438844b1c8432f37a9f1b, type: 3}
 --- !u!50 &2469012491755156153 stripped
