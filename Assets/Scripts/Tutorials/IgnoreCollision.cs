@@ -46,7 +46,7 @@ public class IgnoreCollision : MonoBehaviour
     }
 
     public void EnableColliders(int id) {
-        StartCoroutine(EnableDelay(id, 1f));
+        StartCoroutine(EnableDelay(id, 0.5f));
     }
 
     private void FinalEnable(int id) {

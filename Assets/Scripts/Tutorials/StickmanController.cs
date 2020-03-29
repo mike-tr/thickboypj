@@ -95,9 +95,12 @@ public class StickmanController : MonoBehaviour
             reverse = -1f;
         }
 
-        if (Input.GetKey(KeyCode.E)) {
-            var dir = cam.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-            handR.SetPosition(dir * reverse, 5f);
+        if (Input.GetKeyDown(KeyCode.E)) {
+            animator.SetBool("attack", true);
+            //var dir = cam.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+            //handR.SetPosition(dir * reverse, 5f);
+        }else if (Input.GetKeyUp(KeyCode.E)) {
+            animator.SetBool("attack", false);
         }
 
         if (Input.GetKey(KeyCode.Q)) {

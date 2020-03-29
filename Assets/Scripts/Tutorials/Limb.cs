@@ -45,7 +45,7 @@ public class Limb : MonoBehaviour
         parts.Reverse();
     }
 
-    [Range(1f, 5f)]
+    [Range(1f, 25f)]
     public float addedForce = 1f;
     public void SetPosition(Vector2 targetPos, float addedForce = 1f) {
         currentPos = targetPos + (Vector2)root.position;

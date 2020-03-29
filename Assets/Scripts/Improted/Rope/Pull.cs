@@ -9,10 +9,7 @@ public class Pull : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //Time.timeScale *= .1f;
-        //Time.fixedDeltaTime *= .1f;
-        //Time.fixedDeltaTime *= 0.5f;
-        Debug.Log(Time.fixedDeltaTime);
+
     }
 
     // Update is called once per frame
