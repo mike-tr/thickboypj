@@ -606,7 +606,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &564291002
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -988,7 +988,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &872584212
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1125,6 +1125,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: SNormal (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2225495717236063538, guid: a7478481369438844b1c8432f37a9f1b,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2225495717236063548, guid: a7478481369438844b1c8432f37a9f1b,
+        type: 3}
+      propertyPath: starting_item
+      value: 
+      objectReference: {fileID: 5637412361236245168, guid: 087783bb24e9b5d40a7c827d99c5d55b,
+        type: 3}
     - target: {fileID: 2225495718119076442, guid: a7478481369438844b1c8432f37a9f1b,
         type: 3}
       propertyPath: flip
@@ -1198,7 +1209,7 @@ PrefabInstance:
     - target: {fileID: 5514476026331678476, guid: a7478481369438844b1c8432f37a9f1b,
         type: 3}
       propertyPath: moveSpeed
-      value: 250
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 5514476026331678476, guid: a7478481369438844b1c8432f37a9f1b,
         type: 3}
@@ -1766,7 +1777,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1096911333
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2677,6 +2688,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: SNormal
       objectReference: {fileID: 0}
+    - target: {fileID: 2225495717236063548, guid: a7478481369438844b1c8432f37a9f1b,
+        type: 3}
+      propertyPath: starting_item
+      value: 
+      objectReference: {fileID: 5637412361236245168, guid: 087783bb24e9b5d40a7c827d99c5d55b,
+        type: 3}
     - target: {fileID: 2225495718119076442, guid: a7478481369438844b1c8432f37a9f1b,
         type: 3}
       propertyPath: flip

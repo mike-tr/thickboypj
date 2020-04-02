@@ -25,6 +25,8 @@ public class StickmanController : MonoBehaviour
 
     private float jtime = 0;
 
+    private IStickman brain;
+
     Camera cam;
 
     public bool IsMe = true;
@@ -32,6 +34,12 @@ public class StickmanController : MonoBehaviour
     private void Start() {
         cam = Camera.main;
         animator = GetComponent<Animator>();
+
+        if (IsMe) {
+            brain = new PlayerStickman(this);
+        } else {
+            brain = new StickmanAi(this);
+        }
     }
 
     float rattack = 0;
@@ -59,53 +67,19 @@ public class StickmanController : MonoBehaviour
             return;
         }
         RotateTo(hip, 0, hipForce);
+        brain.Update();
+    }
 
-        if (!IsMe)
-            return;
+    public bool IsAlive() {
+        return !isDead;
+    }
 
-        var direction = Input.GetAxis("Horizontal");
-        if(Mathf.Abs(direction) > 0) {
-            hip.AddForce(moveSpeed * direction * Vector2.right);
-            //if (frameIndex > 10) {
-            //    frameIndex = 0;
-            //    dir *= -1;
-            //}
-
-            //legL.SetPosition(Vector2.right * 10 * dir + Vector2.down * 8);
-            //legR.SetPosition(-Vector2.right * 10 * dir + Vector2.down * 8);
-            //frameIndex++;
-            animator.SetBool("walk", true);
-            walking = true;
-        }else if (walking) {
-            walking = false;
-            animator.SetBool("walk", false);
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space)) {
-            if(JumpCharge > 0) {
-                hip.velocity = Vector2.zero;
-                hip.AddForce(jumpForce * Vector2.up, ForceMode2D.Impulse);
-                JumpCharge--;
-                jtime = Time.timeSinceLevelLoad + .1f;
-            }                 
-        }
-
-        var reverse = 1f;
-        if (Input.GetKey(KeyCode.R)) {
-            reverse = -1f;
-        }
-
-        if (Input.GetKeyDown(KeyCode.E)) {
-            animator.SetBool("attack", true);
-            //var dir = cam.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-            //handR.SetPosition(dir * reverse, 5f);
-        }else if (Input.GetKeyUp(KeyCode.E)) {
-            animator.SetBool("attack", false);
-        }
-
-        if (Input.GetKey(KeyCode.Q)) {
-            var dir = cam.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-            handL.SetPosition(dir * reverse, 5f);
+    public void Jump() {
+        if (JumpCharge > 0) {
+            hip.velocity = Vector2.zero;
+            hip.AddForce(jumpForce * Vector2.up, ForceMode2D.Impulse);
+            JumpCharge--;
+            jtime = Time.timeSinceLevelLoad + .1f;
         }
     }
 

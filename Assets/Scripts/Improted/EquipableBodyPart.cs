@@ -26,6 +26,7 @@ public class EquipableBodyPart : MonoBehaviour
         if (flip) {
             StartCoroutine(Flipper());
         }
+        print("?");
     }
 
     IEnumerator Flipper() {
