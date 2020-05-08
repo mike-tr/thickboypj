@@ -6,23 +6,27 @@ public class GroundChecker : MonoBehaviour
 {
 
     int grounded = 0;
-    StickmanController controller;
+    IController controller;
     // Start is called before the first frame update
     void Start()
     {
-        controller = GetComponentInParent<StickmanController>();
+        controller = GetComponentInParent<IController>();
     }
 
-    private void OnCollisionEnter2D(Collision2D collision) {
-        if(grounded < 1) {
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (grounded < 1)
+        {
             controller.SetGrounded(true);
         }
         grounded++;
     }
 
-    private void OnCollisionExit2D(Collision2D collision) {
+    private void OnCollisionExit2D(Collision2D collision)
+    {
         grounded--;
-        if (grounded < 1) {
+        if (grounded < 1)
+        {
             controller.SetGrounded(false);
             grounded = 0;
         }

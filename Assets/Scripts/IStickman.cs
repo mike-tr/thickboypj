@@ -6,5 +6,5 @@ public interface IStickman
 {
     void Update();
 
-    StickmanController getController();
+    IController getController();
 }

@@ -9,20 +9,29 @@ public class Health : MonoBehaviour
     [SerializeField]
     private bool dead = false;
 
-    StickmanController controller;
+    IController controller;
 
-    private void Start() {
-        controller = GetComponent<StickmanController>();
+    private void Start()
+    {
+        controller = GetComponent<IController>();
     }
 
-    public void GetDamage(float damage) {
+    public void GetDamage(float damage)
+    {
         health -= damage;
-        if(health < 0) {
-            IsDead();
+        if (health < 0)
+        {
+            SetDead();
         }
     }
 
-    void IsDead() {
+    public bool IsDead()
+    {
+        return dead;
+    }
+
+    public void SetDead()
+    {
         dead = true;
         controller.Kill();
     }

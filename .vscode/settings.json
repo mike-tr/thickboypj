@@ -1,0 +1,27 @@
+{
+    // The following will hide the js and map files in the editor
+    "files.exclude": {
+       "**/*.meta": true,
+       "**/*.blend": true,
+       "**/*.blend1": true,
+       "**/*.mat": true,
+       "**/*.asset": true,
+       "**/*.wlt": true,
+       "**/*.csproj": true,
+       "**/*.sln": true,
+       "**/*.unity": true,
+       "**/*.physicsMaterial2D": true,
+
+       "**/Materials/" : true,
+       //"**/Models/" : true,
+
+       "Logs/" : true,
+       "Library/" : true,
+       "obj/" : true,
+       "ProjectSettings/" : true,
+       "Packages/" : true,
+       "Temp/" : true,
+       
+   }
+   
+}

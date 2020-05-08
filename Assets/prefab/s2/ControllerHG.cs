@@ -2,14 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StickmanController : IController
+public class ControllerHG : IController
 {
     public Animator animator;
-    public Limb handR;
-    public Limb handL;
-    public Limb legR;
-    public Limb legL;
-
     public float hipForce = 500;
     public float addedForce = 1f;
     public float moveSpeed = 500;
@@ -29,10 +24,12 @@ public class StickmanController : IController
 
     public bool IsMe = true;
     private bool isDead;
+    private Health health;
     private void Start()
     {
         cam = Camera.main;
         animator = GetComponent<Animator>();
+        health = GetComponent<Health>();
 
         if (IsMe)
         {
@@ -59,28 +56,31 @@ public class StickmanController : IController
         }
     }
 
-    public override Animator GetAnimator()
+    public override void Kill()
     {
-        return animator;
+        isDead = true;
+        // legL.resting = true;
+        // legR.resting = true;
     }
+
+    bool walking = false;
 
     public override float GetMoveSpeed()
     {
         return moveSpeed;
     }
-    public override void Kill()
-    {
-        isDead = true;
-        legL.resting = true;
-        legR.resting = true;
-    }
-
-    bool walking = false;
     void Update()
     {
         if (isDead)
         {
             return;
+        }
+        else
+        {
+            if (health.IsDead())
+            {
+                Kill();
+            }
         }
         RotateTo(hip, 0, hipForce);
         brain.Update();
@@ -91,6 +91,10 @@ public class StickmanController : IController
         return !isDead;
     }
 
+    public override Animator GetAnimator()
+    {
+        return animator;
+    }
     public override void Jump()
     {
         if (JumpCharge > 0)

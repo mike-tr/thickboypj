@@ -2,16 +2,16 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerStickman : IStickman
+public class PlayerIKC : IStickman
 {
-    public static List<PlayerStickman> stickman = new List<PlayerStickman>();
-    private IController controller;
+    public static List<PlayerIKC> stickman = new List<PlayerIKC>();
 
-    public PlayerStickman(IController controller)
+
+    public PlayerIKC(StickmanController controller)
     {
         stickman.Add(this);
         this.controller = controller;
-        animator = controller.GetAnimator();
+        animator = controller.animator;
     }
 
     public bool IsAlive()
@@ -19,12 +19,13 @@ public class PlayerStickman : IStickman
         return controller.IsAlive();
     }
 
+    private IController controller;
+
     bool walking = false;
     private Animator animator;
     public void Update()
     {
         var direction = Input.GetAxis("Horizontal");
-        controller.TryFlip(direction);
         if (Mathf.Abs(direction) > 0)
         {
             controller.hip.AddForce(controller.GetMoveSpeed() * direction * Vector2.right);
