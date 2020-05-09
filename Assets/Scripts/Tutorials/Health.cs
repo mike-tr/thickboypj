@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Health : MonoBehaviour
-{
+public class Health : MonoBehaviour {
     [SerializeField]
     private float health;
     [SerializeField]
@@ -11,28 +10,23 @@ public class Health : MonoBehaviour
 
     IController controller;
 
-    private void Start()
-    {
-        controller = GetComponent<IController>();
+    private void Start () {
+        controller = GetComponent<IController> ();
     }
 
-    public void GetDamage(float damage)
-    {
+    public void GetDamage (float damage) {
         health -= damage;
-        if (health < 0)
-        {
-            SetDead();
+        if (health < 0) {
+            SetDead ();
         }
     }
 
-    public bool IsDead()
-    {
+    public bool IsDead () {
         return dead;
     }
 
-    public void SetDead()
-    {
+    public void SetDead () {
         dead = true;
-        controller.Kill();
+        controller.Kill ();
     }
 }

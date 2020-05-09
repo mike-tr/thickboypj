@@ -8,8 +8,8 @@ public enum Direction {
     left = -1
 }
 
-public class Equipable : Item
-{
+public class Equipable : Item {
     public BodyPartType type;
     public Direction direction;
+    public EquipableBodyPart parent;
 }

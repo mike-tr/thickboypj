@@ -23,7 +23,6 @@ public class ControllerHG : IController
     Camera cam;
 
     public bool IsMe = true;
-    private bool isDead;
     private Health health;
     private void Start()
     {
@@ -54,13 +53,6 @@ public class ControllerHG : IController
             }
             JumpCharge = Jumps;
         }
-    }
-
-    public override void Kill()
-    {
-        isDead = true;
-        // legL.resting = true;
-        // legR.resting = true;
     }
 
     bool walking = false;

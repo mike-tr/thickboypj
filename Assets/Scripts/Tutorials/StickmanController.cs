@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StickmanController : IController
-{
+public class StickmanController : IController {
     public Animator animator;
     public Limb handR;
     public Limb handL;
@@ -28,95 +27,77 @@ public class StickmanController : IController
     Camera cam;
 
     public bool IsMe = true;
-    private bool isDead;
-    private void Start()
-    {
+    private void Start () {
         cam = Camera.main;
-        animator = GetComponent<Animator>();
+        animator = GetComponent<Animator> ();
 
-        if (IsMe)
-        {
-            brain = new PlayerStickman(this);
-        }
-        else
-        {
-            brain = new StickmanAi(this);
+        if (IsMe) {
+            brain = new PlayerStickman (this);
+        } else {
+            brain = new StickmanAi (this);
         }
     }
 
     float rattack = 0;
     float lattack = 0;
 
-    public override void SetGrounded(bool value)
-    {
-        if (value)
-        {
-            if (jtime > Time.timeSinceLevelLoad)
-            {
+    public override void SetGrounded (bool value) {
+        if (value) {
+            if (jtime > Time.timeSinceLevelLoad) {
                 return;
             }
             JumpCharge = Jumps;
         }
     }
 
-    public override Animator GetAnimator()
-    {
+    public override Animator GetAnimator () {
         return animator;
     }
 
-    public override float GetMoveSpeed()
-    {
+    public override float GetMoveSpeed () {
         return moveSpeed;
     }
-    public override void Kill()
-    {
-        isDead = true;
+    public override void Kill () {
+        base.Kill ();
         legL.resting = true;
         legR.resting = true;
     }
 
     bool walking = false;
-    void Update()
-    {
-        if (isDead)
-        {
+    void Update () {
+        if (isDead) {
             return;
         }
-        RotateTo(hip, 0, hipForce);
-        brain.Update();
+        RotateTo (hip, 0, hipForce);
+        brain.Update ();
     }
 
-    public override bool IsAlive()
-    {
+    public override bool IsAlive () {
         return !isDead;
     }
 
-    public override void Jump()
-    {
-        if (JumpCharge > 0)
-        {
+    public override void Jump () {
+        if (JumpCharge > 0) {
             hip.velocity = Vector2.zero;
-            hip.AddForce(jumpForce * Vector2.up, ForceMode2D.Impulse);
+            hip.AddForce (jumpForce * Vector2.up, ForceMode2D.Impulse);
             JumpCharge--;
             jtime = Time.timeSinceLevelLoad + .1f;
         }
     }
 
-    void RotateTo(Rigidbody2D rigidbody, float angle, float force)
-    {
-        angle = Mathf.DeltaAngle(transform.eulerAngles.z, angle);
+    void RotateTo (Rigidbody2D rigidbody, float angle, float force) {
+        angle = Mathf.DeltaAngle (transform.eulerAngles.z, angle);
 
         var x = angle > 0 ? 1 : -1;
-        angle = Mathf.Abs(angle * .1f);
-        if (angle > 2)
-        {
+        angle = Mathf.Abs (angle * .1f);
+        if (angle > 2) {
             angle = 2;
         }
         angle *= .5f;
         angle *= (1 + angle);
 
         rigidbody.angularVelocity *= .5f;
-        rigidbody.AddTorque(angle * force * addedForce * x);
+        rigidbody.AddTorque (angle * force * addedForce * x);
         addedForce = 1f;
     }
 }

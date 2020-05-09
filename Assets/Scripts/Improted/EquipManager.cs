@@ -2,10 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EquipManager : MonoBehaviour
-{
-    private Dictionary<BodyPartType, EquipableBodyPart> bodyParts = new Dictionary<BodyPartType, EquipableBodyPart>();
-    public List<Item> inventory = new List<Item>();
+public class EquipManager : MonoBehaviour {
+    private Dictionary<BodyPartType, EquipableBodyPart> bodyParts = new Dictionary<BodyPartType, EquipableBodyPart> ();
+    public List<Item> inventory = new List<Item> ();
 
     public Equipable starting_item;
 
@@ -13,44 +12,42 @@ public class EquipManager : MonoBehaviour
     public float mana = 10;
 
     // Start is called before the first frame update
-    void Start()
-    {
-        EquipableBodyPart[] get_parts = transform.GetComponentsInChildren<EquipableBodyPart>();
-        foreach(var part in get_parts) {
-            bodyParts.Add(part.type, part);
+    void Start () {
+        EquipableBodyPart[] get_parts = transform.GetComponentsInChildren<EquipableBodyPart> ();
+        foreach (var part in get_parts) {
+            bodyParts.Add (part.type, part);
             part.manager = this;
         }
 
-        EquipItem(starting_item);
+        EquipItem (starting_item);
     }
 
-    void Pickup(Pickable pick) {
+    void Pickup (Pickable pick) {
         if (!pick)
             return;
-        Debug.Log(pick.name);
+        Debug.Log (pick.name);
         var item = pick.item;
-        if(item.GetType() == typeof(Equipable)) {
-            EquipItem((Equipable)item);
+        if (item.GetType () == typeof (Equipable)) {
+            EquipItem ((Equipable) item);
         } else {
-            inventory.Add(item);
+            inventory.Add (item);
         }
-        pick.PickUp();
+        pick.PickUp ();
         // pick an item
     }
 
-    void EquipItem(Equipable item) {
+    void EquipItem (Equipable item) {
         if (!item)
             return;
-        if(bodyParts.TryGetValue(item.type, out var part)) {
-            part.Equip(item);
+        if (bodyParts.TryGetValue (item.type, out var part)) {
+            part.Equip (item);
         }
         // equip the item
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.F)) {
-            Pickup(Pickable.GetItem(transform.position, 10));
+    void Update () {
+        if (Input.GetKeyDown (KeyCode.F)) {
+            Pickup (Pickable.GetItem (transform.position, 10));
             // pickup items!
         }
     }

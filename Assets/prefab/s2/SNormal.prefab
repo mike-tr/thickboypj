@@ -56,6 +56,7 @@ MonoBehaviour:
   updateEveryXFrames: 5
   drawGizmos: 1
   torqueStrength: 1
+  active: 1
   gsize: 0.1
 --- !u!50 &7048636469502119876
 Rigidbody2D:
@@ -222,7 +223,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0.475}
-  m_ConnectedAnchor: {x: -0.0020008087, y: -0.76300025}
+  m_ConnectedAnchor: {x: -0.0020008087, y: -0.76299953}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -369,7 +370,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0.475}
-  m_ConnectedAnchor: {x: 0, y: -0.47500014}
+  m_ConnectedAnchor: {x: 0, y: -0.47499943}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -721,7 +722,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0.4740491, y: 0}
-  m_ConnectedAnchor: {x: -0.47595215, y: 0}
+  m_ConnectedAnchor: {x: -0.47595024, y: 0}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -900,7 +901,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: -0.4740491, y: 0}
-  m_ConnectedAnchor: {x: -0.0021152496, y: 0.76399994}
+  m_ConnectedAnchor: {x: -0.0021152496, y: 0.7640009}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -996,7 +997,7 @@ FixedJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: -0.54999924, y: 0}
+  m_ConnectedAnchor: {x: -0.55000114, y: 0}
   m_DampingRatio: 0
   m_Frequency: 0
 --- !u!114 &685571674878343618
@@ -1046,7 +1047,7 @@ MonoBehaviour:
   target: {fileID: 1307863540024760508}
   pole: {fileID: 5586605979447793210}
   chainLength: 2
-  SetForce: 125
+  SetForce: 5
   delta: 0.25
   iterations: 10
   poleMinDistance: 1
@@ -1054,6 +1055,7 @@ MonoBehaviour:
   updateEveryXFrames: 5
   drawGizmos: 1
   torqueStrength: 1
+  active: 0
   gsize: 0.1
 --- !u!1 &685571674943838419
 GameObject:
@@ -1175,7 +1177,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0.4740491, y: 0}
-  m_ConnectedAnchor: {x: -0.0018863678, y: 0.76399994}
+  m_ConnectedAnchor: {x: -0.0018863678, y: 0.7640009}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -1400,7 +1402,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 15
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -1460,9 +1462,9 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 685571675085911722}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 74b72983d51dc8647b235213ac7cf32e, type: 2}
+  m_Controller: {fileID: 9100000, guid: 4042e48d76aedb44981b9505882c13f2, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -1483,11 +1485,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85cecdf2524554744bc85486e6ee2186, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
   hip: {fileID: 454752616477137899}
-  hipForce: 500
+  Points: {fileID: 4996646626462212558}
+  flipped: 0
+  isDead: 0
+  animator: {fileID: 0}
+  hipForce: 1000
   addedForce: 1
-  moveSpeed: 500
+  moveSpeed: 200
   jumpForce: 500
   Jumps: 2
   JumpCharge: 1
@@ -1614,7 +1619,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0.475}
-  m_ConnectedAnchor: {x: 0, y: -0.47500014}
+  m_ConnectedAnchor: {x: 0, y: -0.47499943}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -1772,7 +1777,7 @@ MonoBehaviour:
   target: {fileID: 1339757579889830793}
   pole: {fileID: 6604281640042630710}
   chainLength: 2
-  SetForce: 125
+  SetForce: 5
   delta: 0.25
   iterations: 10
   poleMinDistance: 1
@@ -1780,6 +1785,7 @@ MonoBehaviour:
   updateEveryXFrames: 5
   drawGizmos: 1
   torqueStrength: 1
+  active: 1
   gsize: 0.1
 --- !u!1 &685571675382965481
 GameObject:
@@ -1901,7 +1907,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0.475}
-  m_ConnectedAnchor: {x: -0.0020008087, y: -0.76300025}
+  m_ConnectedAnchor: {x: -0.0020008087, y: -0.76299953}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -2113,7 +2119,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3355226786915681413}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.22, y: 4.67, z: 0}
+  m_LocalPosition: {x: 1.18, y: -1.33, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_Children: []
   m_Father: {fileID: 4996646626462212558}
@@ -2194,7 +2200,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3642998298642294019}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -5.11, y: 4.67, z: 0}
+  m_LocalPosition: {x: -5.11, y: -1.46, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_Children: []
   m_Father: {fileID: 4996646626462212558}
@@ -2306,6 +2312,7 @@ MonoBehaviour:
   updateEveryXFrames: 5
   drawGizmos: 1
   torqueStrength: 1
+  active: 1
   gsize: 0.1
 --- !u!50 &6727107531404389596
 Rigidbody2D:
@@ -2377,7 +2384,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6029518892501053704}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.82, y: -3.46, z: 0}
+  m_LocalPosition: {x: 0.4, y: -2.33, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_Children: []
   m_Father: {fileID: 4996646626462212558}
@@ -2570,7 +2577,7 @@ HingeJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: -0.3}
-  m_ConnectedAnchor: {x: -0.0020008087, y: 0.7619996}
+  m_ConnectedAnchor: {x: -0.0020008087, y: 0.7620001}
   m_UseMotor: 0
   m_Motor:
     m_MotorSpeed: 0
@@ -2604,7 +2611,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6337817951423614936}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.08, y: -3.29, z: 0}
+  m_LocalPosition: {x: -1.46, y: -3.01, z: 0}
   m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_Children: []
   m_Father: {fileID: 4996646626462212558}
@@ -2799,7 +2806,7 @@ FixedJoint2D:
   m_BreakTorque: Infinity
   m_AutoConfigureConnectedAnchor: 1
   m_Anchor: {x: 0, y: 0}
-  m_ConnectedAnchor: {x: 0.0020008087, y: 0.7160001}
+  m_ConnectedAnchor: {x: 0.0020008087, y: 0.7159996}
   m_DampingRatio: 0
   m_Frequency: 0
 --- !u!114 &1130750971518633992
@@ -2824,6 +2831,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4996646626462212558}
+  - component: {fileID: 796216117}
   m_Layer: 9
   m_Name: Points
   m_TagString: Untagged
@@ -2851,3 +2859,16 @@ Transform:
   m_Father: {fileID: 5958013497307973302}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &796216117
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7649090755263066061}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee995ec52b9a3734aa55cfc46cec8567, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2.5
