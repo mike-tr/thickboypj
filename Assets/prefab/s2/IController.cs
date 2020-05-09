@@ -11,6 +11,10 @@ public abstract class IController : MonoBehaviour
 
     public void TryFlip(float direction)
     {
+        if (!Points)
+        {
+            return;
+        }
         if (flipped)
         {
             if (direction > 0)
