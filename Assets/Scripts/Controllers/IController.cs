@@ -7,8 +7,15 @@ public abstract class IController : MonoBehaviour {
     public Rigidbody2D hip;
 
     public Transform Points;
+    public TargetIdentifier identifier;
     public bool flipped = false;
     public bool isDead = false;
+
+    public void Init () {
+        identifier = Points.GetComponent<TargetIdentifier> ();
+        if (!identifier)
+            identifier = Points.gameObject.AddComponent<TargetIdentifier> ();
+    }
 
     public void TryFlip (float direction) {
         if (!Points) {

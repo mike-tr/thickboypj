@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class PlayerStickman : IStickman {
     public static List<PlayerStickman> stickman = new List<PlayerStickman> ();
-
+    public Camera camera;
     public PlayerStickman (IController controller) {
         stickman.Add (this);
         this.controller = controller;
         animator = controller.GetAnimator ();
+        camera = Camera.main;
     }
 
     bool walking = false;
@@ -37,9 +38,11 @@ public class PlayerStickman : IStickman {
             animator.SetBool ("attack", false);
         }
 
-        //if (Input.GetKey(KeyCode.Q)) {
-        //    var dir = cam.ScreenToWorldPoint(Input.mousePosition) - transform.position;
-        //    handL.SetPosition(dir * reverse, 5f);
-        //}
+        if (Input.GetKey (KeyCode.Q)) {
+            var ik = controller.identifier.targets["TargetLArm"];
+            var pos = camera.ScreenToWorldPoint (Input.mousePosition);
+            pos.z = 0;
+            ik.overrideAnim (pos, 150);
+        }
     }
 }
